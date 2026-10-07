@@ -3,31 +3,113 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CHINSTRAP Borehole Instrumentation Platform - IPICS 2026</title>
+  <title>Poster Title - Conference Name</title>
   <style>
-    body { font-family: system-ui, sans-serif; line-height: 1.6; max-width: 800px; margin: 40px auto; padding: 0 20px; color: #222; }
-    .btn { display: inline-block; background: #0969da; color: #fff; padding: 10px 18px; border-radius: 6px; text-decoration: none; font-weight: bold; }
-    .btn:hover { background: #044289; }
+    :root {
+      --primary-color: #0969da;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.5;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      color: #222;
+      box-sizing: border-box;
+    }
+
+    header {
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      margin-top: 0;
+      font-size: 1.8rem;
+    }
+
+    /* Container for the PDF viewer */
+    .poster-wrapper {
+      width: 100%;
+      height: 88vh; /* Fills almost the entire screen height on desktop */
+      min-height: 650px;
+      border: 1px solid #d0d7de;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+      background-color: #f6f8fa;
+    }
+
+    /* Standard Desktop PDF Object */
+    .pdf-object {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* Mobile Embed (Hidden by default on Desktop) */
+    .mobile-pdf-iframe {
+      display: none;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* Mobile specific adjustments */
+    @media (max-width: 768px) {
+      body {
+        padding: 12px;
+      }
+
+      h1 {
+        font-size: 1.4rem;
+      }
+
+      .poster-wrapper {
+        height: 75vh;
+        min-height: 480px;
+      }
+
+      /* Switch to Google Docs Viewer on mobile to bypass Android PDF block */
+      .pdf-object {
+        display: none;
+      }
+
+      .mobile-pdf-iframe {
+        display: block;
+      }
+    }
   </style>
 </head>
 <body>
-  <h1>CHINSTRAP Borehole Instrumentation Platform</h1>
-  <p><strong>Authors:</strong> James Veale, Dr Emma Fisher, Dr Thomas Bauska</p>
-  <p>Presented at <em>IPICS 2026</em></p>
 
-  <!-- Inline PDF Viewer -->
-  <div class="poster-container">
-    <object data="CHINSTRAP Poster IPICS.pdf" type="application/pdf" class="poster-viewer">
-      <!-- Fallback content if the browser cannot render inline PDFs (e.g. mobile Safari/Chrome) -->
-      <p style="padding: 20px;">
-        Your browser doesn't support embedded PDFs. 
-        <a href="CHINSTRAP Poster IPICS.pdf" class="btn" download>Click here to download the poster PDF</a>
-      </p>
+  <header>
+    <h1>CHINSTRAP Borehole Instrumentation Platform</h1>
+    <p><strong>Authors:</strong> James Veale, Dr Emma Fisher, Dr Thomas Bauska</p>
+    <p><em>British Antarctic Survey</em></p>
+    <p>Presented at <em>Conference Name 2026</em></p>
+  </header>
+
+  <!-- Interactive Poster Container -->
+  <main class="poster-wrapper">
+    <!-- Desktop Native PDF Viewer -->
+    <object 
+      data="CHINSTRAP Poster IPICS.pdf" 
+      type="application/pdf" 
+      class="pdf-object">
     </object>
-  </div>
-  
-  <p><a href="CHINSTRAP Poster IPICS.pdf" class="btn" download>📄 Download Poster</a></p>
 
-  </ul>
+    <!-- Mobile-optimized Embedded Viewer (Google Docs Viewer Fallback) -->
+    <iframe 
+      class="mobile-pdf-iframe" 
+      src="https://docs.google.com/gview?embedded=true&url=https://https://jrveale.github.io/chinstrap-ipics-poster-2026/">
+    </iframe>
+  </main>
+
+  <section>
+    <h2>Funding</h2>
+    <p>The ICECOLD-CHRONO project will enable the initial development of the CHINSTRAP platform and produce the first modules utilising the platform. It is funded by the <a href="url">Royal Society Paul Instrument Fund</a>.</p>
+  </section>
+
 </body>
 </html>
