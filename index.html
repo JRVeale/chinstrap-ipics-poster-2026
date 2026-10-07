@@ -91,20 +91,32 @@
   </header>
   
   <!-- Interactive Poster Container -->
-  <main class="poster-wrapper">
-    <!-- Desktop Native PDF Viewer -->
+  <main class="poster-wrapper" id="posterContainer">
+    <!-- Default Desktop Viewer -->
     <object 
+      id="pdfObject"
       data="CHINSTRAP Poster IPICS.pdf#sidebar=0&toolbar=1" 
       type="application/pdf" 
       class="pdf-object">
     </object>
-
-    <!-- Mobile-optimized Embedded Viewer (Google Docs Viewer Fallback) -->
-    <iframe 
-      class="mobile-pdf-iframe" 
-      src="https://docs.google.com/gview?embedded=true&url=https://jrveale.github.io/chinstrap-ipics-poster-2026/CHINSTRAP%20Poster%20IPICS.pdf">
-    </iframe>
   </main>
+
+  <script>
+    (function() {
+      // Detect Mobile Browsers (Firefox, Chrome, Opera, Safari on mobile)
+      var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) 
+                     || (window.innerWidth <= 768);
+
+      if (isMobile) {
+        var container = document.getElementById('posterContainer');
+        var pdfUrl = "https://jrveale.github.io/chinstrap-ipics-poster-2026/CHINSTRAP%20Poster%20IPICS.pdf";
+        var gviewUrl = "https://docs.google.com/gview?embedded=true&url=" + encodeURIComponent(pdfUrl);
+
+        // Replace the container contents with an explicit-height iframe for mobile Firefox/Opera compliance
+        container.innerHTML = '<iframe src="' + gviewUrl + '" style="width:100%; height:100%; min-height:480px; border:none; display:block;"></iframe>';
+      }
+    })();
+  </script>
 
   <section>
     <h2>Future Work</h2>
