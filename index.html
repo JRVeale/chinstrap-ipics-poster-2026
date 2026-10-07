@@ -31,7 +31,7 @@
     /* Container for the PDF viewer */
     .poster-wrapper {
       width: 100%;
-      height: 88vh; /* Fills almost the entire screen height on desktop */
+      height: 88vh;
       min-height: 650px;
       border: 1px solid #d0d7de;
       border-radius: 8px;
@@ -89,7 +89,7 @@
     <p><a href="https://www.bas.ac.uk/profile/jamle/">James Veale</a>, <a href="https://www.bas.ac.uk/profile/emfish/">Dr Emma Fisher</a>, <a href="https://www.bas.ac.uk/profile/thausk/">Dr Thomas Bauska</a> - <em>British Antarctic Survey</em></p>
     <p>Presented at IPICS 2026</p>
   </header>
-
+  
   <!-- Interactive Poster Container -->
   <main class="poster-wrapper">
     <!-- Desktop Native PDF Viewer -->
@@ -101,8 +101,8 @@
 
     <!-- Mobile-optimized Embedded Viewer (Google Docs Viewer Fallback) -->
     <iframe 
-      class="mobile-pdf-iframe" 
-      src="https://docs.google.com/gview?embedded=true&url=https://https://jrveale.github.io/chinstrap-ipics-poster-2026/">
+      class="pdf-frame" 
+      src="https://mozilla.github.io/pdf.js/web/viewer.html?file=https://https://jrveale.github.io/chinstrap-ipics-poster-2026/">
     </iframe>
   </main>
 
