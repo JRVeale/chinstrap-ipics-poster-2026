@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CHINSTRAP - IPICS 2026</title>
+  <style>
+    :root {
+      --primary-color: #0969da;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.5;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      color: #222;
+      box-sizing: border-box;
+    }
+
+    header {
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      margin-top: 0;
+      font-size: 1.8rem;
+    }
+
+    /* Container for the PDF viewer */
+    .poster-wrapper {
+      width: 100%;
+      height: 88vh;
+      min-height: 650px;
+      border: 1px solid #d0d7de;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+      background-color: #f6f8fa;
+    }
+
+    /* Standard Desktop PDF Object */
+    .pdf-object {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* Mobile Embed (Hidden by default on Desktop) */
+    .mobile-pdf-iframe {
+      display: none;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* Mobile specific adjustments */
+    @media (max-width: 768px) {
+      body {
+        padding: 12px;
+      }
+
+      h1 {
+        font-size: 1.4rem;
+      }
+
+      .poster-wrapper {
+        height: 75vh;
+        min-height: 480px;
+      }
+
+      /* Switch to Google Docs Viewer on mobile to bypass Android PDF block */
+      .pdf-object {
+        display: none;
+      }
+
+      .mobile-pdf-iframe {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>CHINSTRAP Borehole Instrumentation Platform</h1>
+    <h2>Authors</h2>
+    <p><a href="https://www.bas.ac.uk/profile/jamle/">James Veale</a>, <a href="https://www.bas.ac.uk/profile/emfish/">Dr Emma Fisher</a>, <a href="https://www.bas.ac.uk/profile/thausk/">Dr Thomas Bauska</a> - <em>British Antarctic Survey</em></p>
+    <p>Presented at IPICS 2026</p>
+  </header>
+  
+  <!-- Interactive Poster Container -->
+  <main class="poster-wrapper" id="posterContainer">
+    <!-- Default Desktop Viewer -->
+    <object 
+      id="pdfObject"
+      data="CHINSTRAP Poster IPICS.pdf#sidebar=0&toolbar=1" 
+      type="application/pdf" 
+      class="pdf-object">
+    </object>
+  </main>
+
+  <script>
+    (function() {
+      // Detect Mobile Browsers (Firefox, Chrome, Opera, Safari on mobile)
+      var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) 
+                     || (window.innerWidth <= 768);
+
+      if (isMobile) {
+        var container = document.getElementById('posterContainer');
+        var pdfUrl = "https://jrveale.github.io/chinstrap-ipics-poster-2026/CHINSTRAP%20Poster%20IPICS.pdf";
+        var gviewUrl = "https://docs.google.com/gview?embedded=true&url=" + encodeURIComponent(pdfUrl);
+
+        // Replace the container contents with an explicit-height iframe for mobile Firefox/Opera compliance
+        container.innerHTML = '<iframe src="' + gviewUrl + '" style="width:100%; height:100%; min-height:480px; border:none; display:block;"></iframe>';
+      }
+    })();
+  </script>
+
+  <section>
+    <h2>Future Work</h2>
+    <p>Development of CHINSTRAP has only just begun! While the focus for now is on the aspects of the platform required for ICECOLD-CHRONO, we aim to make design choices today that will ensure CHINSTRAP works for as many different borehole environments as possible in the future. Watch this space...</p>
+  </section>
+
+  <section>
+    <h2>Funding</h2>
+    <p>The ICECOLD-CHRONO project is funded by the <a href="https://royalsociety.org/grants/paul-instrument/">Royal Society Paul Instrument Fund</a>.</p>
+  </section>
+
+</body>
+</html>
